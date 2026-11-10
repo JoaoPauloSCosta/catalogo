@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
-/* Com a janela de detalhes aberta, o catálogo atrás fica parado; a calha reservada evita o "pulo" lateral. */
+/* Tema escuro também nas barras de rolagem do navegador. */
 html {
-  scrollbar-gutter: stable;
+  color-scheme: dark;
+  background: #0a0a0a;
 }
+
+/* Com a janela de detalhes aberta, o catálogo atrás fica parado.
+   A barra da janela (sempre visível) ocupa o lugar da barra da página, então nada "pula" de lado. */
 html:has(dialog[open]) {
   overflow: hidden;
 }

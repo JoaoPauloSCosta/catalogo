@@ -59,7 +59,7 @@ const dados = computed(() => {
   <dialog
     ref="dlg"
     aria-label="Detalhes do título"
-    class="fixed inset-0 m-0 h-full max-h-none w-full max-w-none overflow-y-auto bg-black/75 p-0 text-neutral-100 backdrop:bg-transparent"
+    class="fixed inset-0 m-0 h-full max-h-none w-full max-w-none overflow-y-scroll bg-black/75 p-0 text-neutral-100 backdrop:bg-transparent"
     @close="aoFechar"
     @click="$event.target === dlg && dlg?.close()"
   >
