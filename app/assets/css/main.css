@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+/* Com a janela de detalhes aberta, o catálogo atrás fica parado; a calha reservada evita o "pulo" lateral. */
+html {
+  scrollbar-gutter: stable;
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
