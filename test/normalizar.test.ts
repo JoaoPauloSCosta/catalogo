@@ -4,9 +4,11 @@ import {
   extrairProvedores,
   img,
   linkJustWatch,
+  montarBusca,
   montarFileira,
   paraDetalhes,
   paraTitulo,
+  validarBusca,
   validarId,
   validarTipo,
 } from '../server/utils/normalizar'
@@ -173,5 +175,29 @@ describe('paraDetalhes', () => {
     expect(d.trailer).toBeNull()
     expect(d.provedores).toEqual([])
     expect(d.linkJustWatch).toBeNull()
+  })
+})
+
+describe('validarBusca', () => {
+  it('apara espaços e aceita texto de 1 a 100 caracteres', () => {
+    expect(validarBusca('  batman ')).toBe('batman')
+    expect(validarBusca('a'.repeat(100))).toBe('a'.repeat(100))
+  })
+  it('rejeita vazio, longo demais e o que não é texto', () => {
+    for (const v of ['', '   ', 'a'.repeat(101), undefined, ['a', 'b']]) expect(validarBusca(v)).toBeNull()
+  })
+})
+
+describe('montarBusca', () => {
+  it('mistura filmes e séries na ordem, sem pessoas e sem títulos fora dos streamings', () => {
+    const itens = [
+      { id: 1, media_type: 'movie', title: 'Filme' },
+      { id: 2, media_type: 'person', name: 'Ator' },
+      { id: 3, media_type: 'tv', name: 'Série' },
+      { id: 4, media_type: 'movie', title: 'Sem streaming' },
+      { id: 5, media_type: 'tv', name: 'Busca de provedor falhou' },
+    ]
+    const r = montarBusca(itens, [[netflix], [netflix], [netflix], [], undefined])
+    expect(r.map(t => [t.id, t.tipo, t.nome])).toEqual([[1, 'movie', 'Filme'], [3, 'tv', 'Série']])
   })
 })

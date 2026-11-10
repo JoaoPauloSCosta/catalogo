@@ -45,6 +45,20 @@ export function montarFileira(resultados: any[], tipo: Tipo, provedoresPorId: Ma
     .map(r => paraTitulo(r, tipo, provedoresPorId.get(r.id)!))
 }
 
+export function validarBusca(v: unknown): string | null {
+  if (typeof v !== 'string') return null
+  const q = v.trim()
+  return q.length >= 1 && q.length <= 100 ? q : null
+}
+
+// itens: resultados do /search/multi; provedores[i] pertence a itens[i] (undefined = busca falhou).
+export function montarBusca(itens: any[], provedores: (Provedor[] | undefined)[]): Titulo[] {
+  return itens.flatMap((r, i) => {
+    const tipo = validarTipo(r.media_type)
+    return tipo && provedores[i]?.length ? [paraTitulo(r, tipo, provedores[i]!)] : []
+  })
+}
+
 export function paraDetalhes(raw: any, tipo: Tipo): Detalhes {
   const wp = raw['watch/providers']
   const data: string = (tipo === 'movie' ? raw.release_date : raw.first_air_date) ?? ''

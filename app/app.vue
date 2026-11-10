@@ -6,6 +6,7 @@
         <NuxtLink to="/" class="text-neutral-400 hover:text-white" exact-active-class="!text-white font-semibold">Filmes</NuxtLink>
         <NuxtLink to="/series" class="text-neutral-400 hover:text-white" exact-active-class="!text-white font-semibold">Séries</NuxtLink>
       </nav>
+      <BuscaMenu />
     </header>
 
     <main>
