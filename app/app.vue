@@ -16,5 +16,7 @@
       <p>Este produto usa a API do TMDB, mas não é endossado nem certificado pelo TMDB.</p>
       <p>Dados de disponibilidade fornecidos por JustWatch.</p>
     </footer>
+
+    <JanelaDetalhes />
   </div>
 </template>
