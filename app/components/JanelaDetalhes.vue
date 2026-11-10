@@ -90,7 +90,7 @@ const dados = computed(() => {
         <div class="aspect-video bg-neutral-800">
           <iframe
             v-if="tocando && d.trailer"
-            :src="`https://www.youtube-nocookie.com/embed/${d.trailer}?autoplay=1`"
+            :src="`https://www.youtube-nocookie.com/embed/${encodeURIComponent(d.trailer)}?autoplay=1`"
             :title="`Trailer de ${d.nome}`"
             allow="autoplay; encrypted-media; fullscreen"
             allowfullscreen
@@ -124,7 +124,7 @@ const dados = computed(() => {
                 target="_blank"
                 rel="noopener"
                 class="ml-2 text-sm text-neutral-300 underline hover:text-white"
-              >Ver no JustWatch</a>
+              >Ver opções no TMDB</a>
             </div>
           </section>
 

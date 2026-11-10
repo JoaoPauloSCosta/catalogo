@@ -32,7 +32,7 @@ onMounted(() => {
       <button type="button" class="rounded bg-neutral-800 px-3 py-1 text-neutral-100 hover:bg-neutral-700" @click="refresh()">Tentar de novo</button>
     </p>
 
-    <div v-else class="flex snap-x gap-3 overflow-x-auto pb-3 pt-1">
+    <div v-else class="flex snap-x gap-3 overflow-x-auto pb-3 pt-1 [scrollbar-color:#404040_transparent] [scrollbar-width:thin]">
       <template v-if="status === 'success'">
         <Capa v-for="t in data" :key="t.id" :titulo="t" />
       </template>
