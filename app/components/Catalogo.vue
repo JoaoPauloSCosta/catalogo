@@ -10,7 +10,7 @@ const { data: populares } = useLazyFetch<Titulo[]>(`/api/${props.tipo}/fileira/p
 
 <template>
   <div>
-    <Destaque v-if="populares?.[0]" :titulo="populares[0]" />
+    <Destaque v-if="populares?.[1]" :titulo="populares[1]" />
     <Fileira v-for="(f, i) in FILEIRAS[tipo]" :key="f.id" :tipo="tipo" :def="f" :imediata="i === 0" />
   </div>
 </template>
