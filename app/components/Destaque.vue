@@ -16,7 +16,7 @@ const dados = computed(() => {
     : x.temporadas
       ? `${x.temporadas} ${x.temporadas === 1 ? 'temporada' : 'temporadas'}`
       : null
-  return [x.ano, duracao, x.generos.slice(0, 3).join(', ')].filter(Boolean)
+  return [x.ano, duracao, x.generos.slice(0, 3).join(', ')].filter((v): v is string => !!v)
 })
 const nota = computed(() => d.value?.nota ? d.value.nota.toFixed(1).replace('.', ',') : null)
 </script>
